@@ -3,15 +3,15 @@ import PropTypes from 'prop-types'
 import { Container, Row, Col, Form, Button} from "react-bootstrap"
 import "./login.css";
 
-const Login = ({handleOnChange, handleOnSubmit, formSwitcher, email, password}) => {
+const PasswordReset = ({handleOnChange, handleOnResetSubmit, formSwitcher, email}) => {
   return (
     <div>
       <Container>
         <Row>
           <Col>
-          <h1 className='form-login text-info text-center'>Client Login</h1>
+          <h1 className='form-login text-info text-center'>Rest Password</h1>
           <hr />
-          <Form autoComplete='off' onSubmit={handleOnSubmit}>
+          <Form autoComplete='off' onSubmit={handleOnResetSubmit}>
             <Form.Group>
               <Form.Label>Email Address</Form.Label>
               <Form.Control
@@ -24,20 +24,9 @@ const Login = ({handleOnChange, handleOnSubmit, formSwitcher, email, password}) 
               
               />
             </Form.Group>
-             <Form.Group>
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-              type="password"
-              name="password"
-              value={password}
-              onChange={handleOnChange}
-              placeholder="Enter Password"
-              required
              
-              />
-            </Form.Group>
 
-            <Button type="submit">Login</Button>
+            <Button type="submit">Rest Password</Button>
 
 
           </Form>
@@ -47,7 +36,7 @@ const Login = ({handleOnChange, handleOnSubmit, formSwitcher, email, password}) 
 
         <Row>
           <Col>
-          <a href='#!' onClick={() => formSwitcher('reset')}>Forget Password</a>
+          <a href='#!' onClick={() => formSwitcher('login')}>Login Now</a>
           
           </Col>
 
@@ -58,12 +47,12 @@ const Login = ({handleOnChange, handleOnSubmit, formSwitcher, email, password}) 
     </div>
   )
 }
-Login.propTypes = {
+PasswordReset.propTypes = {
   handleOnChange: PropTypes.func.isRequired,
-  handleOnSubmit: PropTypes.func.isRequired,
+  handleOnResetSubmit: PropTypes.func.isRequired,
   formSwitcher: PropTypes.func.isRequired,
   email:PropTypes.string.isRequired,
-  password: PropTypes.string.isRequired,
+ 
 }
 
-export default Login
+export default PasswordReset
