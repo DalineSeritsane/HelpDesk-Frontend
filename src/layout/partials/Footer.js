@@ -1,11 +1,14 @@
-import React from 'react'
+import React from 'react';
+
 
 const Footer = () => {
   return (
-    <div>
-      footer
-    </div>
-  )
-}
+    <footer className="footer">
+      <div className="footer-content">
+        <p>&copy; {new Date().getFullYear()} DeskHelp Pro. All rights reserved.</p>
+      </div>
+    </footer>
+  );
+};
 
-export default Footer
+export default Footer;
