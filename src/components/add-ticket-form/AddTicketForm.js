@@ -1,9 +1,11 @@
 import React from 'react'
 import {Form, Container, Button, Row, Col} from 'react-bootstrap'
 import PropTypes from 'prop-types'
+
+
 import "../../CSS/addTicket.css"
 
-const AddTicketForm = ({handleOnSubmit, handleOnChange, formData}) => {
+const AddTicketForm = ({handleOnSubmit, handleOnChange, formData, formDataError}) => {
   console.log(formData);
   return (
     <Container className='add-new-ticket   mt-5'>
@@ -24,8 +26,9 @@ const AddTicketForm = ({handleOnSubmit, handleOnChange, formData}) => {
                 onChange={handleOnChange}
                 placeholder="Subject"
                 required
-                          
-                 /></Col>
+                  />
+                  <Form.Text className='text-danger'>{formDataError.subject && "Subject is required"}</Form.Text>
+                 </Col>
                 </Form.Group>
                  <Form.Group as={Row}>
                 <Form.Label column sm={3} >Issue Found</Form.Label>
@@ -62,7 +65,8 @@ const AddTicketForm = ({handleOnSubmit, handleOnChange, formData}) => {
 AddTicketForm.propTypes = {
     handleOnSubmit: PropTypes.func.isRequired,
     handleOnChange: PropTypes.func.isRequired,
-    formData: PropTypes.object.isRequired
+    formData: PropTypes.object.isRequired,
+    formDataError: PropTypes.object.isRequired
 }
 
 export default AddTicketForm

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import {Container, Row, Col} from 'react-bootstrap'
 import BreadcrumbPage from '../../components/breadcrum/Breadcrumb'
 import AddTicketForm from '../../components/add-ticket-form/AddTicketForm'
-
+import { shortText } from '../../utils/validation'
 
 const initialFrmDt = {
     subject:'',
@@ -10,11 +10,18 @@ const initialFrmDt = {
     detail:'',
 }
 
+const initialFrmError = {
+    subject:false,
+    issueDate: false,
+    detail:false,
+}
+
 const AddTicket = () => {
 
     const [formData, setFormData] = useState(initialFrmDt);
+     const [formDataError, setFormDataError] = useState(initialFrmError);
     
-    useEffect(()=> {}, [formData])
+    useEffect(()=> {}, [formData, formDataError])
 
     const handleOnChange = (e) =>{
         const {name, value} = e.target;
@@ -27,8 +34,18 @@ const AddTicket = () => {
         // console.log(name, value)
     }
 
-    const handleOnSubmit = (e) =>{
+    const handleOnSubmit = async (e) =>{
         e.preventDefault()
+
+        setFormDataError(initialFrmError)
+
+        const isSubjectValid = await shortText(formData.subject)
+        
+           setFormDataError({
+            ...initialFrmError,
+            subject: !isSubjectValid
+           })
+
 
         console.log('form submit request received', formData)
     }
@@ -47,7 +64,8 @@ const AddTicket = () => {
             <Col>
           <AddTicketForm handleOnChange={handleOnChange} 
           handleOnSubmit={handleOnSubmit}
-          formData = {formData}
+          formData={formData}
+          formDataError = {formDataError}
           />
             </Col>
         </Row>
