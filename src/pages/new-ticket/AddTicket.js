@@ -21,7 +21,7 @@ const AddTicket = () => {
 
 
         setFormData({
-            ...initialFrmDt,
+            ...formData,
             [name]:value
         })
         // console.log(name, value)
@@ -30,7 +30,7 @@ const AddTicket = () => {
     const handleOnSubmit = (e) =>{
         e.preventDefault()
 
-        console.log('form submit request received')
+        console.log('form submit request received', formData)
     }
    
 

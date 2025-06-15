@@ -1,12 +1,16 @@
 import React from 'react'
 import {Form, Container, Button, Row, Col} from 'react-bootstrap'
 import PropTypes from 'prop-types'
-
+import "../../CSS/addTicket.css"
 
 const AddTicketForm = ({handleOnSubmit, handleOnChange, formData}) => {
   console.log(formData);
   return (
-    <Container className='mt-5'>
+    <Container className='add-new-ticket   mt-5'>
+      <h1 className='text-info text-center'>ADD NEW TICKET</h1>
+      <hr />
+      <div>
+        
          <Form autoComplete='off' onSubmit={handleOnSubmit}>
         <Form.Group  as={Row}>
          <Form.Label column sm={3}>
@@ -36,7 +40,7 @@ const AddTicketForm = ({handleOnSubmit, handleOnChange, formData}) => {
                 </Col>
             </Form.Group>
                  <Form.Group>
-                <Form.Label>Password</Form.Label>
+                <Form.Label>Details</Form.Label>
                 <Form.Control
                 as="textarea"
                 name="detail"
@@ -46,9 +50,12 @@ const AddTicketForm = ({handleOnSubmit, handleOnChange, formData}) => {
                 required    
                 />
             </Form.Group>
-            <Button type='submit' variant='info' className='w-100'>Login </Button>
+            <Button type='submit' variant='info' className='w-100'>ADD NEW TICKET </Button>
+       
         </Form>
+        </div>
     </Container>
+    
   )
 }
 
