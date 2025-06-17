@@ -1,13 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {Container, Row, Col, Button} from 'react-bootstrap'
 import BreadcrumbPage from '../../components/breadcrum/Breadcrumb'
 import tickets from '../../assests/data/dummy-tickets.json'
 import MessageHistory from '../../components/message-history/MessageHistory'
+import UpdateTicket from '../../components/update-ticket/UpdateTicket'
 
 
 
 const Ticket = () => {
     const ticket = tickets [0]
+
+    const [message, setMessage] = useState('')
     
   return (
    <Container>
@@ -35,7 +38,7 @@ const Ticket = () => {
 
      <Row className="mt-5">
         <Col>
-       vadvd
+       <UpdateTicket msg="message" />
         </Col>
     </Row>
 
