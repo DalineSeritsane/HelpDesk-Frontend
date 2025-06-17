@@ -9,12 +9,25 @@ import tickets from "../../assests/data/dummy-tickets.json";
 const TicketList = () => {
 
     const [str, setStr] = useState("");
+     const [dispTicket, setDispTicket] = useState(tickets);
 
-    useEffect(() => {}, [str]);
+    useEffect(() => {
+      
+    }, [str, dispTicket]);
 
     const handleOnChange = (e) =>{
-        setStr(e.target.value);
+      const {value} = e.target;
+        setStr(value);
+        searchTicket(value)
         // console.log(e.target)
+    };
+
+    const searchTicket = sttr =>{
+
+      const displayTicket = tickets.filter(row => row.subject.toLowerCase().includes(sttr.toLowerCase())
+    )
+
+      setDispTicket(displayTicket)
     }
 
   return (
@@ -35,7 +48,7 @@ const TicketList = () => {
         <hr />
          <Row>
             <Col>
-           <TicketTable tickets={tickets} />
+           <TicketTable tickets={dispTicket} />
             </Col>
         </Row>
 
