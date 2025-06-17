@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Button, Form } from 'react-bootstrap'
 
-const UpdateTicket = ({msg}) => {
+const UpdateTicket = ({msg, handleOnChange, handleOnSubmit}) => {
   return (
-    <Form>
+    <Form onSubmit={handleOnSubmit}>
         <Form.Label>Replay</Form.Label>
         <div className='replay-text'>
             
@@ -12,6 +12,9 @@ const UpdateTicket = ({msg}) => {
         </div>
 
         <Form.Control
+        
+        value={msg}
+        onChange={handleOnChange}
         as="textarea"
         row="5"
         name='detail'
@@ -23,6 +26,12 @@ const UpdateTicket = ({msg}) => {
     </Form>
 
   )
+}
+
+UpdateTicket.propTypes = {
+    handleOnChange: PropTypes.func.isRequired,
+    handleOnSubmit: PropTypes.func.isRequired,
+    msg: PropTypes.string.isRequired,
 }
 
 export default UpdateTicket
