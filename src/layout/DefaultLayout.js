@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from './partials/Navbar'
 import Footer from './partials/Footer'
 import "../CSS/defaultlayout.css";
+import { Outlet} from 'react-router-dom'
 
 const DefaultLayout = ({ children }) => {
   return (
@@ -10,11 +11,12 @@ const DefaultLayout = ({ children }) => {
         <Navbar />
          </header>
 
-      < main className='main'>
+      < main className='main flex-grow-1'> //sticky layout behavior
       {children}
+      <Outlet />
       </main>
 
-      <footer className='footer'>
+      <footer className='footer mt-auto'>
        <Footer />
        </footer>
     </div>
