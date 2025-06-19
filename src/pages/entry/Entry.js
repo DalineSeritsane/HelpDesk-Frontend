@@ -9,6 +9,8 @@ const Entry = () => {
   const [password, setPassword] = useState('');
   const [formLoad, setFormLoad] = useState('login');
 
+ 
+
   const handleOnChange = (e) => {
     const { name, value } = e.target;
 
@@ -34,6 +36,8 @@ const Entry = () => {
     }
     //Too call api to submit the form
     console.log(email, password);
+
+    
   };
 
   const handleOnResetSubmit = (e) => {

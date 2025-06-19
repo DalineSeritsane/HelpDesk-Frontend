@@ -1,39 +1,50 @@
-import React from 'react'
-import {Navbar, Nav} from 'react-bootstrap'
-import {LinkContainer} from 'react-router-bootstrap'
-import logo from "../../assests/logo.jpg";
-import "../../CSS/navbar.css";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import '../../CSS/navbar.css';
+import logo from '../../assests/logo.jpg';
 
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
 
-
-const NavbarComp = () => {
   return (
-    <Navbar
-    collapseOnSelect bg='info'
-    variant='dark' expand='md'
-    >
-      <Navbar.Brand>
-        <img src={logo} alt='logo' width="50px" />
-      </Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className='ms-auto'>
-          {/* <Link to='/dashboard'>Dashboard</Link>
-          <Link to='/tickets'>Tickets</Link>
-          <Link to=''>Logout</Link> */}
+    <nav className="custom-navbar">
+      <div className="nav-container">
+        <Link to="/dashboard" className="nav-logo">
+          <img src={logo} alt="Logo" />
+          <span>HelpDesk Pro</span>
+        </Link>
 
-          <LinkContainer to='/dashboard'>
-          <Nav.Link >Dashboard</Nav.Link></LinkContainer>
-          <LinkContainer to='/tickets'>
-          <Nav.Link >Tickets</Nav.Link></LinkContainer>
+        <button className="nav-toggle" onClick={toggleMenu}>
+          ☰
+        </button>
 
-          <Nav.Link href='#'>Logout</Nav.Link>
-        </Nav>
-      </Navbar.Collapse>
-      
-    </Navbar>
-  )
-}
+        <div className={`nav-links ${isOpen ? 'active' : ''}`}>
+          <Link to="/dashboard" className="nav-link">Dashboard</Link>
+          <Link to="/tickets" className="nav-link">Tickets</Link>
 
-export default NavbarComp;
+          {localStorage.getItem('auth-token') ? (
+            <button
+              className="nav-link logout-btn"
+              onClick={() => {
+                localStorage.removeItem('auth-token');
+                window.location.replace('/');
+              }}
+            >
+              LOGOUT
+            </button>
+          ) : (
+            <Link to="" className="nav-link">
+              <button className="login-btn">Login</button>
+            </Link>
+          )}
+        </div>
+      </div>
+    </nav>
+  );
+};
+
+export default Navbar;

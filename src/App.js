@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Entry from "./pages/entry/Entry";
 import DefaultLayout from "./layout/DefaultLayout";
@@ -15,12 +16,12 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Entry />} />
         {/* Protected routes with layout */}
-        <Route exact path="/" element={<DefaultLayout />} />
-         <Route exact path="/dashboard" element={<Dashboard />} />
-         <Route exact path="/add-ticket" element={<AddTicket />} />
-         <Route exact path="/tickets" element={<TicketList />} />
+        <Route  element={<DefaultLayout />} >
+         <Route  path="/dashboard" element={<Dashboard />} />
+         <Route  path="/add-ticket" element={<AddTicket />} />
+         <Route  path="/tickets" element={<TicketList />} />
          <Route path="ticket/:id" element={<Ticket />} />
-       
+       </Route>
       </Routes>
       </Router>
     </div>
