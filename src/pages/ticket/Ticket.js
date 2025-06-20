@@ -5,16 +5,25 @@ import tickets from '../../assests/data/dummy-tickets.json'
 import MessageHistory from '../../components/message-history/MessageHistory'
 import UpdateTicket from '../../components/update-ticket/UpdateTicket'
 
-
+import {useParams} from 'react-router-dom'
 
 const Ticket = () => {
-    const ticket = tickets [0]
+    // const ticket = tickets [0]
+
+    const {tId} = useParams()
 
     const [message, setMessage] = useState('')
+    const [ticket, setTicket] = useState("")
 
     useEffect (() => {
-
-    }, [message])
+            for (let i = 0; i < ticket.length; i++) {
+                if(ticket[i].id == tId){
+                    setTicket(ticket[i])
+                    continue
+                }
+                
+            }
+    }, [message, tId]);
 
     const handleOnChange = (e) => {
         setMessage(e.target.value);
@@ -34,6 +43,7 @@ const Ticket = () => {
     </Row>
       <Row>
         <Col className='text-weight-bolder text-secondary'>
+        {tId}
        <div className='subject'>Subject :{ticket.subject}</div>
        <div className='date'>Ticket Opened :{ticket.addedAt}</div>
        <div className='status'>Status:{ticket.status}</div>
