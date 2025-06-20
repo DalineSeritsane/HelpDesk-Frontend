@@ -4,6 +4,8 @@ import TicketTable from '../../components/ticket-table/TicketTable'
 import tickets from '../../assests/data/dummy-tickets.json';
 import BreadcrumbPage from '../../components/breadcrum/Breadcrumb';
 
+import {Link} from 'react-router-dom'
+
 const Dashboard = () => {
   return (
     <Container>
@@ -14,9 +16,12 @@ const Dashboard = () => {
         </Row>
         <Row>
             <Col className='text-center mt-5 mb-2 '>
+            <Link to="/add-ticket">
+            
             <Button variant='info' style={{fontSize:"2rem",
                 padding:"10px 30px"}}>
                     Add New Ticket</Button>
+                    </Link>
             </Col>
         </Row>
          <Row>

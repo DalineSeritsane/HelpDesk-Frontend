@@ -5,6 +5,7 @@ import SearchForm from '../../components/search-form/SearchForm'
 import TicketTable from '../../components/ticket-table/TicketTable'
 import tickets from "../../assests/data/dummy-tickets.json";
 
+import {Link} from 'react-router-dom'
 
 const TicketList = () => {
 
@@ -39,7 +40,9 @@ const TicketList = () => {
         </Row>
              <Row className='mt-4'>
             <Col>
-            <Button variant='info'>ADD NEW TICKET</Button>
+            <Link to="/add-ticket">
+            
+            <Button variant='info'>ADD NEW TICKET</Button></Link>
             </Col>
               <Col className='text-right'>
             <SearchForm handleOnChange={handleOnChange} str={str} />
